@@ -23,7 +23,7 @@ Připojovací URL, které se zadává při konfiguraci panelu Database v Intelli
 1. Udělej fork zdrojového repository do svého účtu na GitHubu.
 1. Naklonuj si repository **ze svého účtu** na GitHubu na lokální počítač.
 1. Spusť si naklonovanou aplikaci, aby se vytvotřila databáze. V prohlížeči se na stránce [http://localhost:8080/](http://localhost:8080/) zatím bude zobrazovat
-   jen chyba, v aplikaci není žádný controller.
+   jen chyba, v aplikaci není žádný cz.czechitas.java2webapps.ukol7.controller.
 1. Zprovozni si panel Database v IntelliJ Idea, ať si můžeš ověřit, co je v databázi (je tam jen prázdná tabulka, žádné zápisky 😉). Připojovací URL, které se
    zadává při konfiguraci panelu *Database* v IntelliJ Idea, najdeš v souboru `src/main/resources/application.yaml`. Nejjednodušší je použít *DataSource from
    URL*.
@@ -34,7 +34,7 @@ Připojovací URL, které se zadává při konfiguraci panelu Database v Intelli
 1. Vytvoř službu `PostService`, která bude pomoc `@Autowired` získávat `PostRepository`.
 1. Ve službě `PostService` vytvoř metodu `list()`, která bude vracet seznam všech postů (zatím bez stránkování a řazení). Dále tam vytvoř metodu
    `singlePost(String slug)`, která najde jeden post podle zadaného `slug` a ten vrátí.
-1. Vytvoř controller a v něm dvě metody, pro zobrazení úvodí stránky se seznamem postů a pro zobrazení jednoho kompletního postu. Controller bude používat
+1. Vytvoř cz.czechitas.java2webapps.ukol7.controller a v něm dvě metody, pro zobrazení úvodí stránky se seznamem postů a pro zobrazení jednoho kompletního postu. Controller bude používat
    službu
    `PostService`, kterou získá pomocí `@Autowired`. Nemusíš řešit případ, když si uživatel vymyslí URL postu, který neexistuje.
 1. Vytvoř šablony pro obě metody controlleru. Na vzhledu nezáleží :-) Pro vložení HTML kódu z modelu do šablony je nutné místo použít ve Freemarkeru zápis
