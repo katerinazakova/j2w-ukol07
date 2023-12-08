@@ -21,12 +21,13 @@
         </tr>
         </thead>
         <tbody>
-        [#list seznam as post]
+        [#list seznam.content as post]
         <tr>
             <td>${post.title}</td>
             <td>${post.perex?no_esc}</td>
-            <td>${post.published}</td>
+            <td>${post.published?date}</td>
             <td>${post.author}</td>
+            <td><a href="/post/${post.slug}">Přečíst</a></td>
         </tr>
         [/#list]
         </tbody>
