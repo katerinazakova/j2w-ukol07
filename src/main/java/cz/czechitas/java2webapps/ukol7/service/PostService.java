@@ -20,14 +20,15 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    public Page<Post> list(Pageable pageable) {
+    public Page<Post> list() {
+        Pageable pageable = PageRequest.of(0, 20);
         return postRepository.findAll(pageable);
     }
 
     public Optional<Post> singlePost(String slug) {
         return postRepository.findBySlug(slug);
     }
-    public Page <Post> seznamPostPodlePublikace (LocalDate date, Pageable pageable) {
-        return postRepository.findByPublishedAfterOrderByPublishedDesc(date, pageable);
+    public Page <Post> dleDataPublikace(LocalDate published, Pageable pageable) {
+        return postRepository.findByPublishedBeforeOrderByPublishedDesc(published, pageable);
     }
 }

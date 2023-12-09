@@ -8,13 +8,14 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
 </head>
 <body>
-<form method="get">
-<div>${post.title}</div>
-    <div>${post.perex?no_esc}</div>
-    <div>${post.body?no_esc}</div>
-    <div>${post.author}</div>
-    <div>${post.published?date}</div>
-    <div><a href="/">Zpět na úvodní stránku</a></div>
+
+<form action="/datum-publikace" method="get">
+    <div class="row">
+        <div class="two columns submit">
+            <button class="button-primary" type="submit">Seřadit podle data publikace</button>
+        </div>
+    </div>
 </form>
+
 </body>
 </html>

@@ -10,6 +10,9 @@
 <body>
     <h1>Blog o běhu</h1>
     <h3>Seznam blogových zápisků</h3>
+
+    [#include "datum-publikace.ftlh"]
+
     <table class="table">
         <thead>
         <tr>
