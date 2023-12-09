@@ -28,7 +28,8 @@ public class PostService {
     public Optional<Post> singlePost(String slug) {
         return postRepository.findBySlug(slug);
     }
-    public Page <Post> dleDataPublikace(LocalDate published, Pageable pageable) {
-        return postRepository.findByPublishedBeforeOrderByPublishedDesc(published, pageable);
+    public Page <Post> dleDataPublikace(Pageable pageable) {
+        LocalDate currentDate = LocalDate.now();
+        return postRepository.findByPublishedBeforeOrderByPublishedDesc(currentDate,pageable);
     }
 }

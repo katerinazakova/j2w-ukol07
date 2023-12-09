@@ -34,9 +34,10 @@ public class PostController {
     }
 
     @GetMapping("/datum-publikace")
-    public ModelAndView datumPublikace(@ModelAttribute("published") LocalDate published, Pageable pageable) {
-        return new ModelAndView("index")
-                .addObject("post", postService.dleDataPublikace(published,pageable));
+    public ModelAndView datumPublikace(Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("seznam", postService.dleDataPublikace(pageable));
+        return modelAndView;
     }
 
 
