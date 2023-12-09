@@ -1,7 +1,7 @@
 [#ftl]
 [@c.page]
     <h1>Blog o běhu</h1>
-    [#include "/_forms/datum-publikace.ftlh"]
+    [#include "_forms/datum-publikace.ftlh"]
     <table class="table">
         <thead>
         <tr>
@@ -24,4 +24,14 @@
         [/#list]
         </tbody>
     </table>
+<div class="pagination">
+    [#if seznam.hasPrevious()]
+        <a href="?page=${seznam.number - 1}">Předchozí</a>
+    [/#if]
+
+    [#if seznam.hasNext()]
+        <a href="?page=${seznam.number + 1}">Další</a>
+    [/#if]
+</div>
+
 [/@c.page]
