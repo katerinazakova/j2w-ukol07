@@ -1,16 +1,7 @@
 [#ftl]
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <title>Můj blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="/images/favicon.png">
-</head>
-<body>
+[@c.page]
     <h1>Blog o běhu</h1>
-    [#include "datum-publikace.ftlh"]
-
+    [#include "/_forms/datum-publikace.ftlh"]
     <table class="table">
         <thead>
         <tr>
@@ -23,16 +14,14 @@
         </thead>
         <tbody>
         [#list seznam.content as post]
-        <tr>
-            <td>${post.title}</td>
-            <td>${post.perex?no_esc}</td>
-            <td>${post.published?date}</td>
-            <td>${post.author}</td>
-            <td><a href="/post/${post.slug}">Přečíst</a></td>
-        </tr>
+            <tr>
+                <td>${post.title}</td>
+                <td>${post.perex?no_esc}</td>
+                <td>${post.published?date}</td>
+                <td>${post.author}</td>
+                <td><a href="/post/${post.slug}">Přečíst</a></td>
+            </tr>
         [/#list]
         </tbody>
     </table>
-
-</body>
-</html>
+[/@c.page]
