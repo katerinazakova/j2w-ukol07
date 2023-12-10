@@ -2,6 +2,9 @@
 [@c.page]
     <h1>Blog o běhu</h1>
     [#include "_forms/datum-publikace.ftlh"]
+    <div>
+        <a href="/novy">Vytvořit nový post</a>
+    </div>
     <table class="table">
         <thead>
         <tr>

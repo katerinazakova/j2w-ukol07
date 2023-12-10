@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -21,8 +22,8 @@ public class PostService {
     }
 
     public Page<Post> list() {
-        Pageable pageable = PageRequest.of(0, 20);
-        return postRepository.findAll(pageable);
+        Pageable pageableSort = PageRequest.of(0, 20, Sort.by("published").descending());
+        return postRepository.findAll(pageableSort);
     }
 
     public Optional<Post> singlePost(String slug) {
@@ -33,4 +34,19 @@ public class PostService {
         LocalDate currentDate = LocalDate.now();
         return postRepository.findByPublishedBeforeOrderByPublishedDesc(currentDate, pageable);
     }
+
+    public Post novyPost(Post post){
+        post.setId(null);
+        return postRepository.save(post);
+    }
+
+    public Post smazatPost (String slug){
+        return postRepository.deleteBySlug(slug);
+
+    }
+
+    public Post upravitPost (Post post){
+        return postRepository.save(post);
+    }
+
 }

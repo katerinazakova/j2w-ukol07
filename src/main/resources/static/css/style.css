@@ -1,0 +1,27 @@
+
+.formular {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 5%;
+    border: 1px solid #111111;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 10px darkgray;
+    margin: 5% 0 5% 0;
+}
+.form-group {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.radek {
+    width: 40%;
+    padding: 10px 5px;
+}
+
+.error {
+    color: red;
+}
