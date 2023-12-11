@@ -2,7 +2,7 @@
     <form action="/datum-publikace" method="get">
         <div class="row">
             <div class="two columns submit">
-                <button class="button-primary" type="submit">Seřadit podle data publikace</button>
+                <button class="btn btn-outline-secondary" type="submit">Seřadit podle data publikace</button>
             </div>
         </div>
     </form>

@@ -3,9 +3,9 @@
     <h1>Blog o běhu</h1>
     [#include "_forms/datum-publikace.ftlh"]
     <div>
-        <a href="/novy">Vytvořit nový post</a>
+        <button type="button" class="btn btn-outline-success"><a href="/novy">Vytvořit nový post</a></button>
     </div>
-    <table class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">Titulek</th>
@@ -17,12 +17,12 @@
         </thead>
         <tbody>
         [#list seznam.content as post]
-            <tr>
+            <tr class="table-row">
                 <td>${post.title}</td>
                 <td>${post.perex?no_esc}</td>
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
-                <td><a href="/post/${post.slug}">Přečíst</a></td>
+                <td><a class= "precist" href="/post/${post.slug}">Přečíst</a></td>
             </tr>
         [/#list]
         </tbody>

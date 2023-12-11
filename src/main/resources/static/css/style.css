@@ -1,4 +1,22 @@
 
+body {
+    line-height: 1.5;
+    font-size: 20px;
+    font-weight: normal;
+    padding: 30px 15%;
+}
+
+h1 {
+    text-align: center;
+}
+.precist{
+    font-weight: bold;
+}
+.pagination {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
 .formular {
     font-weight: bold;
     display: flex;
