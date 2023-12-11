@@ -34,59 +34,10 @@ public class PostController {
         return modelAndView;
     }
 
-    @GetMapping("/datum-publikace")
-    public ModelAndView datumPublikace(Pageable pageable) {
-        ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("seznam", postService.dleDataPublikovani(pageable));
-        return modelAndView;
-    }
-
-
     @GetMapping("/post/{slug}")
     public ModelAndView detailPost(@PathVariable String slug) {
-        Optional<Post> postOptional = postService.singlePost(slug);
-        postOptional.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return new ModelAndView("detail")
-                .addObject("post", postOptional.get());
-    }
-
-    @GetMapping("/novy")
-    public ModelAndView novyPost() {
-        ModelAndView modelAndView = new ModelAndView("novy-post");
-        modelAndView.addObject("post", new Post());
-        return modelAndView;
-    }
-
-    @PostMapping("/novy")
-    public Object pridatPost (@Valid @ModelAttribute ("post") Post post, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return "/novy-post";
-        }
-        postService.novyPost(post);
-        return "redirect:/";
-    }
-
-    @PostMapping("/post/{slug}")
-    public String smazatPost(@PathVariable String slug) {
-        postService.smazatPost(slug);
-        return "redirect:/";
-    }
-
-    @GetMapping("/post/{slug}/edit")
-    public ModelAndView editacePost(@PathVariable String slug) {
-        Optional<Post> post = postService.singlePost(slug);
-        ModelAndView modelAndView = new ModelAndView("novy-post");
-        modelAndView.addObject("post", post.get());
-        return modelAndView;
-    }
-
-   @PostMapping("/post/{slug}/edit")
-    public String upravitPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "novy-post";
-        }
-        postService.upravitPost(post);
-        return "redirect:/post/{slug}";
+                .addObject("post", postService.singlePost(slug));
     }
 
 }

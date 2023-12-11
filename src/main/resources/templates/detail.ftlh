@@ -9,14 +9,4 @@
         <div><a href="/">Zpět na úvodní stránku</a></div>
     </form>
 
-    <form method="post" action="/post/{slug}">
-        <input type="hidden" name="slug" value="${post.slug}">
-        <button class="btn btn-primary btn-light" type="submit">smazat</button>
-    </form>
-
-    <form method="post">
-        <input type="hidden" name="slug" value="${post.slug}">
-        <button class="btn btn-primary btn-light" type="submit">upravit</button>
-    </form>
-
 [/@c.page]

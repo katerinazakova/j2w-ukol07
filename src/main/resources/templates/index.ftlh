@@ -1,10 +1,7 @@
 [#ftl]
 [@c.page]
     <h1>Blog o běhu</h1>
-    [#include "_forms/datum-publikace.ftlh"]
-    <div>
-        <button type="button" class="btn btn-outline-success"><a href="/novy">Vytvořit nový post</a></button>
-    </div>
+
     <table class="table table-hover">
         <thead>
         <tr>
@@ -22,19 +19,10 @@
                 <td>${post.perex?no_esc}</td>
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
-                <td><a class= "precist" href="/post/${post.slug}">Přečíst</a></td>
+                <td><a class="precist" href="/post/${post.slug}">Přečíst</a></td>
             </tr>
         [/#list]
         </tbody>
     </table>
-<div class="pagination">
-    [#if seznam.hasPrevious()]
-        <a href="?page=${seznam.number - 1}">Předchozí</a>
-    [/#if]
-
-    [#if seznam.hasNext()]
-        <a href="?page=${seznam.number + 1}">Další</a>
-    [/#if]
-</div>
 
 [/@c.page]

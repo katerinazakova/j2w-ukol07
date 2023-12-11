@@ -7,9 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,31 +25,14 @@ public class PostService {
     }
 
     public Page<Post> list() {
-        Pageable pageableSort = PageRequest.of(0, 20, Sort.by("published").descending());
-        return postRepository.findAll(pageableSort);
-    }
-
-    public Optional<Post> singlePost(String slug) {
-        return postRepository.findBySlug(slug);
-    }
-
-    public Page<Post> dleDataPublikovani(Pageable pageable) {
+        Pageable pageableSort = PageRequest.of(0, 20);
         LocalDate currentDate = LocalDate.now();
-        return postRepository.findByPublishedBeforeOrderByPublishedDesc(currentDate, pageable);
+        return postRepository.findByPublishedBeforeOrderByPublishedDesc(currentDate, pageableSort);
     }
 
-    public Post novyPost(Post post){
-        post.setId(null);
-        return postRepository.save(post);
-    }
-
-    public Post smazatPost (String slug){
-        return postRepository.deleteBySlug(slug);
-
-    }
-
-    public Post upravitPost (Post post){
-        return postRepository.save(post);
+    public Post singlePost(String slug) {
+        return postRepository.findBySlug(slug)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
 }
