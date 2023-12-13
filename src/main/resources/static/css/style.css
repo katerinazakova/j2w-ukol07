@@ -8,3 +8,20 @@ body {
 h1 {
     text-align: center;
 }
+.form-group {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.form-group label {
+    flex-basis: 10%;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.form-group input {
+    flex-grow: 1;
+    width: 400%;
+    padding: 10px;
+    border: 1px solid #ccc;
+}

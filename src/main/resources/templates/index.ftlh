@@ -2,6 +2,7 @@
 [@c.page]
     <h1>Blog o běhu</h1>
 
+    <button type="button" class="btn btn-outline-primary"><a href="/novy">Nový záznam</a></button>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -27,12 +28,12 @@
 
     <div class="predchozi">
         [#if seznam.hasPrevious()]
-            <a href="?page=${seznam.number - 1}">Předchozí</a>
+            <a href="?page=${seznam.number - 1}" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Předchozí</a>
         [/#if]
     </div>
     <div class="dalsi">
         [#if seznam.hasNext()]
-            <a href="?page=${seznam.number + 1}">Další</a>
+            <a href="?page=${seznam.number + 1}" class=link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Další</a>
         [/#if]
     </div>
 

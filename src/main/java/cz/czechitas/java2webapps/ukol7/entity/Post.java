@@ -17,10 +17,15 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
+    @NotBlank
     private String slug;
+    @NotBlank
     private String author;
+    @NotBlank
     private String title;
+    @NotBlank
     private String perex;
+    @NotBlank
     private String body;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate published;

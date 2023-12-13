@@ -33,4 +33,9 @@ public class PostService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+
+    public Post saveNewPost(Post post){
+        post.setId(null);
+        return postRepository.save(post);
+    }
 }

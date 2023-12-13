@@ -1,12 +1,17 @@
 package cz.czechitas.java2webapps.ukol7.controller;
 
+import cz.czechitas.java2webapps.ukol7.entity.Post;
 import cz.czechitas.java2webapps.ukol7.service.PostService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import static java.nio.file.Files.size;
@@ -33,4 +38,19 @@ public class PostController {
                 .addObject("post", postService.singlePost(slug));
     }
 
+    @GetMapping("/novy")
+    public ModelAndView novyPost (){
+        ModelAndView modelAndView = new ModelAndView("novy-post");
+        modelAndView.addObject("post", new Post());
+        return modelAndView;
+    }
+
+   @PostMapping("/novy")
+    public Object vytvoritNovyPost (@Valid @ModelAttribute("post") Post post, BindingResult bindingResult){
+       if (bindingResult.hasErrors()) {
+           return "novy-post";
+       }
+       postService.saveNewPost(post);
+       return "redirect:/";
+    }
 }
