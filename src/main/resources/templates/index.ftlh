@@ -25,4 +25,15 @@
         </tbody>
     </table>
 
+    <div class="predchozi">
+        [#if seznam.hasPrevious()]
+            <a href="?page=${seznam.number - 1}">Předchozí</a>
+        [/#if]
+    </div>
+    <div class="dalsi">
+        [#if seznam.hasNext()]
+            <a href="?page=${seznam.number + 1}">Další</a>
+        [/#if]
+    </div>
+
 [/@c.page]

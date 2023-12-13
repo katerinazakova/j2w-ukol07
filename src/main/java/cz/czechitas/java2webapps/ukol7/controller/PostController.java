@@ -2,10 +2,14 @@ package cz.czechitas.java2webapps.ukol7.controller;
 
 import cz.czechitas.java2webapps.ukol7.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
+
+import static java.nio.file.Files.size;
 
 @Controller
 public class PostController {
@@ -17,9 +21,9 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView seznamPost() {
+    public ModelAndView seznamPost(@PageableDefault(size = 8) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("seznam", postService.list());
+        modelAndView.addObject("seznam", postService.list(pageable));
         return modelAndView;
     }
 
