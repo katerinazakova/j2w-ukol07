@@ -39,18 +39,25 @@ public class PostController {
     }
 
     @GetMapping("/novy")
-    public ModelAndView novyPost (){
+    public ModelAndView novyPost() {
         ModelAndView modelAndView = new ModelAndView("novy-post");
         modelAndView.addObject("post", new Post());
         return modelAndView;
     }
 
-   @PostMapping("/novy")
-    public Object vytvoritNovyPost (@Valid @ModelAttribute("post") Post post, BindingResult bindingResult){
-       if (bindingResult.hasErrors()) {
-           return "novy-post";
-       }
-       postService.saveNewPost(post);
-       return "redirect:/";
+    @PostMapping("/novy")
+    public Object vytvoritNovyPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "novy-post";
+        }
+        postService.saveNewPost(post);
+        return "redirect:/";
     }
+
+    @PostMapping("/{id}")
+    public String smazatZaznam(@PathVariable long id) {
+        postService.deletePost(id);
+        return "redirect:/";
+    }
+
 }

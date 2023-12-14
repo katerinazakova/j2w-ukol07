@@ -21,6 +21,13 @@
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
                 <td><a class="precist" href="/post/${post.slug}">Přečíst</a></td>
+                <td><form method="post" action="/${post.id}">
+                    <div>
+                        <input type="hidden" name="id" value="${post.id}"/>
+                        <button type="submit" class="btn btn-secondary">Smazat</button>
+                    </div>
+                </form>
+                </td>
             </tr>
         [/#list]
         </tbody>
@@ -28,12 +35,14 @@
 
     <div class="predchozi">
         [#if seznam.hasPrevious()]
-            <a href="?page=${seznam.number - 1}" class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Předchozí</a>
+            <a href="?page=${seznam.number - 1}"
+               class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Předchozí</a>
         [/#if]
     </div>
     <div class="dalsi">
         [#if seznam.hasNext()]
-            <a href="?page=${seznam.number + 1}" class=link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Další</a>
+            <a href="?page=${seznam.number + 1}" class=link-secondary link-offset-2 link-underline-opacity-25
+               link-underline-opacity-100-hover">Další</a>
         [/#if]
     </div>
 
