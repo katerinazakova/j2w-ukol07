@@ -2,7 +2,7 @@ body {
     line-height: 1.5;
     font-size: 20px;
     font-weight: normal;
-    padding: 30px 15%;
+    padding: 30px 5%;
 }
 
 h1 {
@@ -25,3 +25,4 @@ h1 {
     padding: 10px;
     border: 1px solid #ccc;
 }
+
