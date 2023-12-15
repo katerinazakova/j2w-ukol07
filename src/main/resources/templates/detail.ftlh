@@ -9,4 +9,18 @@
         <div><a href="/">Zpět na úvodní stránku</a></div>
     </form>
 
+    <form method="post" action="/${post.id}">
+        <div>
+            <input type="hidden" name="id" value="${post.id}"/>
+            <button type="submit" class="btn btn-danger btn-sm">Smazat</button>
+        </div>
+    </form>
+    </td>
+    <td>
+        <form method="get" action="/${post.slug}/editace">
+            <input type="hidden" name="id" value="${post.slug}"/>
+            <button type="submit" class="btn btn-secondary btn-sm">Editovat</button>
+        </form>
+    </td>
+
 [/@c.page]

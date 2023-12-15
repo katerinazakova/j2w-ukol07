@@ -21,7 +21,7 @@
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
                 <td><a class="btn btn-primary btn-sm" href="/post/${post.slug}">Přečíst</a></td>
-                <td>
+                [#--<td>
                     <form method="post" action="/${post.id}">
                         <div>
                             <input type="hidden" name="id" value="${post.id}"/>
@@ -34,10 +34,9 @@
                         <input type="hidden" name="id" value="${post.id}"/>
                         <button type="submit" class="btn btn-secondary btn-sm">Editovat</button>
                     </form>
-
                 </td>
+            </tr>--]
 
-            </tr>
         [/#list]
         </tbody>
     </table>
