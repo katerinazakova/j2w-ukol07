@@ -42,10 +42,19 @@ public class PostService {
     }
 
     public Post deletePost(long id) {
-        Post optionalPost = postRepository.findById(id)
+        Post post = postRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         postRepository.deleteById(id);
-        return optionalPost;
+        return post;
+    }
+
+    public Post findId (long id) {
+        return postRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    public Post savePost (Post post) {
+        return postRepository.save(post);
     }
 
 }

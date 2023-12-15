@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import static java.nio.file.Files.size;
+import java.util.Optional;
 
 @Controller
 public class PostController {
@@ -40,7 +40,7 @@ public class PostController {
 
     @GetMapping("/novy")
     public ModelAndView novyPost() {
-        ModelAndView modelAndView = new ModelAndView("novy-post");
+        ModelAndView modelAndView = new ModelAndView("form-post");
         modelAndView.addObject("post", new Post());
         return modelAndView;
     }
@@ -48,18 +48,33 @@ public class PostController {
     @PostMapping("/novy")
     public Object vytvoritNovyPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "novy-post";
+            return "form-post";
         }
         postService.saveNewPost(post);
         return "redirect:/";
     }
 
     @PostMapping("/{id}")
-    public String smazatZaznam(@PathVariable long id) {
+    public String smazatPost(@PathVariable long id) {
         postService.deletePost(id);
         return "redirect:/";
     }
 
+    @GetMapping("/{id}/editace")
+    public ModelAndView editPost(@PathVariable long id) {
+        ModelAndView modelAndView = new ModelAndView("form-post");
+        modelAndView.addObject("post", postService.findId(id));
+        return modelAndView;
+    }
 
+    @PostMapping("/{id}/editace")
+    public String ulozitPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "form-post";
+        }
+        postService.savePost(post);
+        return "redirect:/";
+    }
 
 }
+

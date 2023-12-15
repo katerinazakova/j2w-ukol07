@@ -2,7 +2,7 @@
 [@c.page]
     <h1>Blog o běhu</h1>
 
-    <a  class="btn btn-outline-primary" href="/novy">Nový záznam</a>
+    <a class="btn btn-outline-primary" href="/novy">Nový záznam</a>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -21,16 +21,17 @@
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
                 <td><a class="btn btn-primary btn-sm" href="/post/${post.slug}">Přečíst</a></td>
-                <td><form method="post" action="/${post.id}">
-                    <div>
-                        <input type="hidden" name="id" value="${post.id}"/>
-                        <button type="submit" class="btn btn-danger btn-sm">Smazat</button>
-                    </div>
-                </form>
+                <td>
+                    <form method="post" action="/${post.id}">
+                        <div>
+                            <input type="hidden" name="id" value="${post.id}"/>
+                            <button type="submit" class="btn btn-danger btn-sm">Smazat</button>
+                        </div>
+                    </form>
                 </td>
                 <td>
-                    <form method="post" action="">
-                        <input type="hidden" name="id" value="${post.id}" />
+                    <form method="get" action="/${post.id}/editace">
+                        <input type="hidden" name="id" value="${post.id}"/>
                         <button type="submit" class="btn btn-secondary btn-sm">Editovat</button>
                     </form>
 
@@ -49,7 +50,8 @@
     </div>
     <div class="dalsi">
         [#if seznam.hasNext()]
-            <a href="?page=${seznam.number + 1}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Další</a>
+            <a href="?page=${seznam.number + 1}"
+               class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Další</a>
         [/#if]
     </div>
 
