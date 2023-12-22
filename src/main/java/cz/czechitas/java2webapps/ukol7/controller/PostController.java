@@ -60,20 +60,21 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping("/{slug}/editace")
-    public ModelAndView editPost(@PathVariable String slug) {
+    @GetMapping("/{id}/editace")
+    public ModelAndView editPost(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("form-post");
-        modelAndView.addObject("post", postService.singlePost(slug));
+        modelAndView.addObject("post", postService.findId(id));
         return modelAndView;
     }
 
-    @PostMapping("/{slug}/editace")
-    public String ulozitPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
+    @PostMapping("/{id}/editace")
+    public Object ulozitPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "form-post";
         }
         postService.savePost(post);
-        return "redirect:/post/{slug}";
+        return "redirect:/";
     }
+
 }
 

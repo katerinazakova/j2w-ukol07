@@ -8,4 +8,5 @@ CREATE TABLE post
     body      TEXT         NOT NULL,
     published DATE
 );
+
 CREATE INDEX ON post(published);
