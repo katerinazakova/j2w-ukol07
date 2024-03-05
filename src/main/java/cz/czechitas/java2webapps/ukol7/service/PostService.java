@@ -2,18 +2,13 @@ package cz.czechitas.java2webapps.ukol7.service;
 
 import cz.czechitas.java2webapps.ukol7.entity.Post;
 import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Service
 public class PostService {
@@ -29,12 +24,10 @@ public class PostService {
         return postRepository.findByPublishedBeforeOrderByPublishedDesc(currentDate, pageable);
     }
 
-
     public Post singlePost(String slug) {
         return postRepository.findBySlug(slug)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
-
 
     public Post saveNewPost(Post post) {
         post.setId(null);

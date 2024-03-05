@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Optional;
-
 @Controller
 public class PostController {
     private final PostService postService;
@@ -26,27 +24,27 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView seznamPost(@PageableDefault(size = 8) Pageable pageable) {
+    public ModelAndView listOfPosts(@PageableDefault(size = 8) Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("seznam", postService.list(pageable));
+        modelAndView.addObject("list", postService.list(pageable));
         return modelAndView;
     }
 
     @GetMapping("/post/{slug}")
-    public ModelAndView detailPost(@PathVariable String slug) {
+    public ModelAndView detailOfPost(@PathVariable String slug) {
         return new ModelAndView("detail")
                 .addObject("post", postService.singlePost(slug));
     }
 
-    @GetMapping("/novy")
-    public ModelAndView novyPost() {
+    @GetMapping("/new")
+    public ModelAndView newPost() {
         ModelAndView modelAndView = new ModelAndView("form-post");
         modelAndView.addObject("post", new Post());
         return modelAndView;
     }
 
-    @PostMapping("/novy")
-    public Object vytvoritNovyPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
+    @PostMapping("/new")
+    public Object createNewPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "form-post";
         }
@@ -55,12 +53,12 @@ public class PostController {
     }
 
     @PostMapping("/{id}")
-    public String smazatPost(@PathVariable long id) {
+    public String deletePostById(@PathVariable long id) {
         postService.deletePost(id);
         return "redirect:/";
     }
 
-    @GetMapping("/{id}/editace")
+    @GetMapping("/{id}/edit")
     public ModelAndView editPost(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("form-post");
         modelAndView.addObject("post", postService.findId(id));

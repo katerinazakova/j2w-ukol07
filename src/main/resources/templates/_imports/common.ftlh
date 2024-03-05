@@ -1,6 +1,6 @@
 [#ftl]
 
-[#macro page title="Blog o běhu"]
+[#macro page title="Running blog"]
     <!DOCTYPE html>
     <html lang="cs">
     <head>

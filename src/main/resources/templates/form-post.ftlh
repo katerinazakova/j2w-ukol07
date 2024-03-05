@@ -1,7 +1,7 @@
 [#ftl]
 [#import "/spring.ftl" as spring]
 [@c.page]
-    <h1>Blog o běhu</h1>
+    <h1>Running blog</h1>
     <form class="formular" method="post">
         <div class="form-group">
             <label for="slug" class="radek">Slug:</label>
@@ -11,13 +11,13 @@
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
         <div class="form-group">
-            <label for="author" class="radek">Autor:</label>
+            <label for="author" class="radek">Author:</label>
             <div class="input">[@spring.formInput path="post.author" /]</div>
         </div>
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
         <div class="form-group">
-            <label for="title" class="radek">Titulek:</label>
+            <label for="title" class="radek">Title:</label>
             <div class="input">[@spring.formInput path="post.title" /]</div>
         </div>
         <div class="error">[@spring.showErrors "<br>"/]</div>
@@ -35,12 +35,12 @@
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
         <div class="form-group">
-            <label for="published" class="radek">Datum publikace:</label>
+            <label for="published" class="radek">Date of published:</label>
             <div class="input">[@spring.formInput path="post.published" fieldType="date"/]</div>
         </div>
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
-        <button type="submit" class="btn btn-outline-primary">Ulozit</button>
+        <button type="submit" class="btn btn-outline-primary">Save</button>
     </form>
 
 [/@c.page]

@@ -1,38 +1,38 @@
 [#ftl]
 [@c.page]
-    <h1>Blog o běhu</h1>
+    <h1>Running blog</h1>
 
-    <a class="btn btn-outline-primary" href="/novy">Nový záznam</a>
+    <a class="btn btn-outline-primary" href="/new">new entry</a>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Titulek</th>
+            <th scope="col">Title</th>
             <th scope="col">Perex</th>
-            <th scope="col">Datum publikace</th>
-            <th scope="col">Autor</th>
+            <th scope="col">Date of published</th>
+            <th scope="col">Author</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
-        [#list seznam.content as post]
+        [#list list.content as post]
             <tr class="table-row">
                 <td>${post.title}</td>
                 <td>${post.perex?no_esc}</td>
                 <td>${post.published?date}</td>
                 <td>${post.author}</td>
-                <td><a class="btn btn-primary btn-sm" href="/post/${post.slug}">Přečíst</a></td>
+                <td><a class="btn btn-primary btn-sm" href="/post/${post.slug}">Read</a></td>
                 <td>
                     <form method="post" action="/${post.id}">
                         <div>
                             <input type="hidden" name="id" value="${post.id}"/>
-                            <button type="submit" class="btn btn-danger btn-sm">Smazat</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </div>
                     </form>
                 </td>
                 <td>
-                    <form method="get" action="/${post.id}/editace">
+                    <form method="get" action="/${post.id}/edit">
                         <input type="hidden" name="id" value="${post.id}"/>
-                        <button type="submit" class="btn btn-secondary btn-sm">Editovat</button>
+                        <button type="submit" class="btn btn-secondary btn-sm">Edit</button>
                     </form>
                 </td>
             </tr>
@@ -41,16 +41,16 @@
         </tbody>
     </table>
 
-    <div class="predchozi">
-        [#if seznam.hasPrevious()]
-            <a href="?page=${seznam.number - 1}"
-               class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Předchozí</a>
+    <div class="previous">
+        [#if list.hasPrevious()]
+            <a href="?page=${list.number - 1}"
+               class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Previous</a>
         [/#if]
     </div>
-    <div class="dalsi">
-        [#if seznam.hasNext()]
-            <a href="?page=${seznam.number + 1}"
-               class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Další</a>
+    <div class="next">
+        [#if list.hasNext()]
+            <a href="?page=${list.number + 1}"
+               class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Next</a>
         [/#if]
     </div>
 
