@@ -65,7 +65,7 @@ public class PostController {
         return modelAndView;
     }
 
-    @PostMapping("/{id}/editace")
+    @PostMapping("/{id}/edit")
     public Object ulozitPost(@Valid @ModelAttribute("post") Post post, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "form-post";
