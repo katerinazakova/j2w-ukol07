@@ -11,6 +11,8 @@
             <th scope="col">Date of published</th>
             <th scope="col">Author</th>
             <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -24,14 +26,12 @@
                 <td>
                     <form method="post" action="/${post.id}">
                         <div>
-                            <input type="hidden" name="id" value="${post.id}"/>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </div>
                     </form>
                 </td>
                 <td>
                     <form method="get" action="/${post.id}/edit">
-                        <input type="hidden" name="id" value="${post.id}"/>
                         <button type="submit" class="btn btn-secondary btn-sm">Edit</button>
                     </form>
                 </td>
